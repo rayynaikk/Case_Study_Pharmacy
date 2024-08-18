@@ -1,0 +1,335 @@
+Case Study: A Visibility-Driven Strategy for Non-Medication Purchases in
+an Online Pharmacy
+
+# Contents {#contents .TOC-Heading}
+
+[Background: [1](#background)](#background)
+
+[Objective: [2](#_Toc174894157)](#_Toc174894157)
+
+[Baseline Data Analysis:
+[2](#baseline-data-analysis)](#baseline-data-analysis)
+
+[Overview: [2](#overview)](#overview)
+
+[Key Metrics: [2](#key-metrics)](#key-metrics)
+
+[Revenue Overview: [2](#revenue-overview)](#revenue-overview)
+
+[Customer Count: [3](#customer-count)](#customer-count)
+
+[Order ID Count: [3](#order-id-count)](#order-id-count)
+
+[Trends Observed: [4](#trends-observed)](#trends-observed)
+
+[Analysis of Potential Impact:
+[4](#analysis-of-potential-impact)](#analysis-of-potential-impact)
+
+[Conversion rate Impact:
+[4](#conversion-rate-impact)](#conversion-rate-impact)
+
+[Average Order Value Impact:
+[5](#average-order-value-impact)](#average-order-value-impact)
+
+[Revenue Impact: [5](#revenue-impact)](#revenue-impact)
+
+[Bounce rate Impact: [5](#bounce-rate-impact)](#bounce-rate-impact)
+
+[Operational impact: [5](#operational-impact)](#operational-impact)
+
+[Evaluation on proposed change:
+[6](#evaluation-on-proposed-change)](#evaluation-on-proposed-change)
+
+[A/B Testing: [6](#ab-testing)](#ab-testing)
+
+[Feature Flags Analysis:
+[6](#feature-flags-analysis)](#feature-flags-analysis)
+
+[Behavioral Analytics:
+[6](#behavioral-analytics)](#behavioral-analytics)
+
+[Success testing: [6](#success-testing)](#success-testing)
+
+[Operational efficiency:
+[7](#operational-efficiency)](#operational-efficiency)
+
+[Future Considerations:
+[7](#future-considerations)](#future-considerations)
+
+# Background:
+
+The company is an online pharmacy that provides customers with the
+convenience of ordering prescription medications through a user-friendly
+app. It allows customers to add items to a shopping cart, proceed to
+checkout, and finalize their orders. Recently, the company introduced a
+feature that enables customers to add non-medication items---such as
+vitamins or Band-Aids---to their cart during the checkout process. These
+additional items are then delivered along with the prescription
+medications. The goal of this feature is to enhance customer convenience
+by offering complementary products.
+
+[]{#_Toc174894157 .anchor}Objective:
+
+In February 2024, the Product Team aims to increase the visibility of
+this feature during the checkout process. The expectation is that 20% of
+customers who complete the checkout process will also add non-medication
+items to their cart. As the analyst supporting this initiative, my role
+is to evaluate the potential impact of this change and assess its
+success post-implementation.
+
+# Baseline Data Analysis:
+
+## Overview:
+
+Exploratory data analysis was conducted on customer purchase behavior
+from November 2023 to January 2024, following the implementation of a
+new checkout feature allowing for non-medication item additions.
+
+False (non-medication items added)
+
+True (non-medication items added)
+
+Null (no detail whether non-medication added or not)
+
+## Key Metrics:
+
+-   Total Records: 11,992
+
+-   Total Distinct Users: 6,624
+
+## Revenue Overview:
+
+-   False: \$128,220.25
+
+-   True: \$11,770.16
+
+-   Null: \$7,122.38
+
+![A graph of a chart Description automatically generated with medium
+confidence](vertopal_69cb8327fb614d8099d3bab716ac4209/media/image1.png){width="3.747181758530184in"
+height="2.486111111111111in"}
+
+## Customer Count:
+
+-   False: 4,612 unique customers out of 6,425 total customers
+
+-   True: 383 unique customers out of 391 total customers
+
+-   Null: 3,923 unique customers out of 5,176 total customers
+
+![A graph of numbers and a number of months Description automatically
+generated](vertopal_69cb8327fb614d8099d3bab716ac4209/media/image2.png){width="3.8680555555555554in"
+height="2.5001410761154856in"}
+
+## Order ID Count:
+
+-   Null: 340 orders
+
+-   Cancelled Orders: 491 out of 7,156 orders were canceled
+
+![](vertopal_69cb8327fb614d8099d3bab716ac4209/media/image3.png){width="3.6666666666666665in"
+height="2.2900885826771655in"}
+
+## Trends Observed:
+
+**Revenue Increase:** There was a notable increase in revenue during
+December 2023 (\$58,640) compared to November 2023 (\$53,659). However,
+revenue decreased in January 2024 (\$34,814).
+
+**Customer Count Shifts:** In November 2023, 41.04% of customers did
+indicate whether they added non-medication items or not, whereas 58.96%
+did not added those products. In December 2023, the percentage of
+customers adding non-medication items decreased to 4.60%, with an
+increase in the following month as well.
+
+**Customer Behavior:** The drop in revenue and customer count in January
+2024 could indicate a shift in customer behavior or satisfaction, it
+could be regarding the non-medication items feature.
+
+**Feature Adoption**: The adoption rate of the non-medication items
+feature was zero in November, however showed an increase over time,
+which may suggest a positive launch of the current feature. Despite
+evidence of purchases, a portion of customers were misidentified as
+\'null\' within the dataset. This systemic error prevented their
+contribution to the month\'s total revenue, which was resolved later for
+the month of January 2024.
+
+**Order value distribution:** Medication-only orders have a lower range
+(\$8.22 - \$35.62) compared to non-medication orders (\$13.52 - \$50.7).
+The peak for medication-only orders is around \$19.18, indicating that
+lower-value orders are more common. Non-medication orders peak around
+\$33.8.
+
+Medication orders are more concentrated in a narrower range, with a
+clear peak and a gradual decline. Non-medication orders are more spread
+out across a wider range, with a more balanced distribution. Customers
+are likely to spend more on orders having non-medication items than on
+medication-only orders.
+
+![A graph of a bar chart Description automatically generated with medium
+confidence](vertopal_69cb8327fb614d8099d3bab716ac4209/media/image4.png){width="2.826388888888889in"
+height="2.456544181977253in"}
+
+# Analysis of Potential Impact:
+
+## Conversion rate Impact:
+
+Total distinct users mentioned in the dataset from November 2023 to
+January 2024 are 6624. 4612 chose not to add non-med medications and 383
+customers added those products to their cart. Only unique customer ids
+were considered for this formulation.
+
+The overall Conversion rate of customers currently adding non-medication
+items during checkout is 5.78%.
+
+-   There were no customers in November 2023, who added non-med
+    medications in their cart.
+
+-   In December 2023, the conversion rate jumped from 0% to 5.10%.
+
+-   In January 2024, there was a slight increase in the conversion rate
+    from 5.10% to 6.86%.
+
+## Average Order Value Impact:
+
+Average Checkouts Per Month for given period in the dataset is 2400. On
+Average, 2400 customers complete the checkout process monthly.
+
+-   The total revenue generated that includes non-medication items for
+    the given timeframe is 11771\$ with total 391 numbers of orders.
+
+-   Average Order Value (AOV) for Non-Medication Items from November
+    2023 to January 2024 is 30.10\$.
+
+## Revenue Impact:
+
+The product team proposed a 20% increment in total checkout orders. The
+projected non-medication orders based on the current average monthly
+order is 480 orders.
+
+However, incremented orders would be based on current conversion rates.
+Considering the 5.78% conversion rate on current monthly orders, there
+will be an additional 340 orders per month.
+
+Additional revenue based on incremental orders and checkouts should be
+10234\$.
+
+## Bounce rate Impact:
+
+There is a total of 11992 records in the dataset for the given period
+from November 2023 to January 2024. A total of 4836 times no
+transactions were generated, which indicates customers who start the
+checkout process abandon it without completing their purchase. The
+overall bounce rate is 40.32%.
+
+The bounce rate for each month is respectively 41%, 40.31% and 39.15%,
+showing the application is having continuous high bounce rates.
+
+This is a critical metric that needs attention, especially in the
+context of the recent feature implementation to increase the visibility
+of non-medication items during checkout.
+
+## Operational impact:
+
+The average screentime spent between checkout started and checkout
+completed was calculated and compared for non-medication and only
+medication orders by each month. There was no significant difference
+visible. The Average screentime varied between 7.4 to 7.7 minutes.
+
+The average delivery time was calculated and compared for non-medication
+and only medication orders by each month. There was no significant
+difference visible in any situation. The Average delivery time was
+between 1-2 days.
+
+# Evaluation on proposed change:
+
+## A/B Testing:
+
+**Scenario:** two or more versions of a feature can help determine which
+performs better based on specific metrics, one with the increased
+visibility and one without (control group).
+
+**Evaluation:** testing two different layouts for a checkout page to see
+which one reduces cart abandonment rates. Test different pricing tiers
+or discount offers to see which generates more sales or better customer
+retention.
+
+## Feature Flags Analysis:
+
+**Scenario:** Gradual rollouts will release a feature to a small segment
+of users first and expand it over time. This approach will help manage
+risk by monitoring the feature's performance and impact before
+full-scale deployment.
+
+**Evaluation:** Apply these incremented visibility rollouts in specific
+cities or states or for specific groups of people having medical issues.
+These will exhibit higher conversion rates for non-medication items
+without negatively impacting other metrics. For more advanced testing,
+the combination of A/B testing and Feature flag analysis implementation
+will roll out more strategic metric evaluation criteria.
+
+## Behavioral Analytics:
+
+**Scenario:** Closely examine users\' interactions with the checkout
+page, track the sequence of clicks or actions on the non-medication item
+section, time spent browsing these items, and the frequency of adding
+non-medication items to the cart.
+
+**Evaluation:** If the visibility change is successful, there should be
+a noticeable increase in clicks and time spent on the non-medication
+section, ultimately leading to a higher conversion rate for these items.
+Also, it will share insights on which specific functions or tracks are
+successful or not.
+
+## Success testing:
+
+**Scenario:** Track the conversion rates, revenue, and any changes in
+customer behavior weekly.
+
+**Evaluation:** Apply above testing methods over different groups of
+users and keep monitoring all the KPIs to match projected success. Did
+the percentage of customers adding non-medication items reach or exceed
+the projected 20%? Was the projected additional revenue of \$15,000
+achieved or exceeded?
+
+## Operational efficiency:
+
+**Scenario**: Evaluation of effects on internal processes, such as
+delivery times or resource utilization, helps in understanding if the
+feature improves efficiency or creates additional overhead.
+
+**Evaluation**: Assess whether the increased visibility or number of
+items affects delivery times, courier costs or the effect on processing
+times and error rates in billing operations after implementing the
+change.
+
+# Future Considerations:
+
+The current Case study was constructed based on the given dataset.
+However, there are some key questions to consider for future analysis
+and strategy regarding the non-medication items feature in the app:
+
+-   Are there specific user segments that are more likely to use this
+    feature?
+
+-   What patterns can we identify among customers who add non-medication
+    items versus those who do not?
+
+-   Are there specific non-medication items that are more popular?
+
+-   What additional product categories could be introduced that would
+    appeal to the existing customer base?
+
+-   How should inventory management adapt to an expanded range of
+    products?
+
+-   Which regional area shows more correlation with conversion rate?
+
+If successful, the company could explore further personalization of the
+suggested non-medication items or introduce bundled offers to further
+enhance sales.
+
+This case study outlines a strategic approach to evaluating and
+implementing a product change within the online pharmacy, focusing on
+maximizing customer engagement and revenue while maintaining high levels
+of operational efficiency.
